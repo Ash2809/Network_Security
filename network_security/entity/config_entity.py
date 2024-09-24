@@ -1,9 +1,27 @@
-from dataclasses import dataclass
+from datetime import datetime
+import os
+from network_security.constant import training_pipeline
 
-@dataclass
 class Data_ingestion_config():
     def __init__(self):
         pass
 
-@dataclass
-class 
+class Data_transformation_config():
+    def __init__(self):
+        pass
+
+class Data_validation_config():
+    def __init__(self):
+        pass
+
+class Model_Evaluater_config():
+    def __init__(self):
+        pass
+
+class Model_trainer_config():
+    def __init__(self):
+        pass
+ 
+class Model_pusher_config():
+    def __init__(self):
+        pass
