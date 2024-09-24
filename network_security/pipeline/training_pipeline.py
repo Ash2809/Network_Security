@@ -12,7 +12,7 @@ from network_security.components.model_pusher import ModelPusher
 from network_security.components.model_training import ModelTrainer
 
 from network_security.entity.config_entity import(
-    TrainingPipelineConfig,
+    Training_pipeline_config,
     Data_ingestion_config, 
     Data_validation_config, 
     Data_transformation_config, 
@@ -31,11 +31,17 @@ from network_security.entity.artifact_entity import(
 
 class TrainingPipeline():
     def __init__(self):
-        pass
+        self.training_pipepline_config = Training_pipeline_config()  # Correct initialization
 
     def start_data_ingestion(self):
         try:
-            pass
+            self.data_ingestion_config = Data_ingestion_config(training_pipeline_config=self.training_pipepline_config)  # Use correct attribute
+            logging.info("Starting data ingestion")
+            data_ingestion = DataIngestion(data_ingestion_config=self.data_ingestion_config)
+            data_ingestion_artifact = data_ingestion.initiate_ingestion()
+            logging.info(f"Data ingestion completed and artifact: {data_ingestion_artifact}")
+            return data_ingestion_artifact
+            
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
@@ -71,8 +77,7 @@ class TrainingPipeline():
         
     def run_pipeline(self):
         try:
-            pass
+            ingestion_artifact = self.start_data_ingestion()
+            print(ingestion_artifact)
         except Exception as e:
             raise NetworkSecurityException(e, sys)
-
-
