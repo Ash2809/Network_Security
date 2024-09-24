@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 from network_security.constant import training_pipeline
+print(training_pipeline.ARTIFACT_DIR)
 
 class Data_ingestion_config():
     def __init__(self):
