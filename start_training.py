@@ -3,3 +3,14 @@ from network_security.logger.logger import logging
 
 import os
 import sys
+
+from network_security.pipeline.training_pipeline import TrainingPipeline
+
+def start_traninig():
+    try:
+        pass
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)
+    
+if __name__ == "__main__":
+    start_traninig()
