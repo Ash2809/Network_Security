@@ -25,12 +25,25 @@ class Model_Evaluater_artifact():
     pass
 
 @dataclass
-class Model_trainer_artifact():
-    pass
+class ClassificationMetricArtifact:
+    f1_score: float
+    precision_score: float
+    recall_score: float
 
 @dataclass
-class Classification_metric_artifact():
-    pass
+class Model_trainer_artifact():
+    trained_model_file_path: str
+    train_metric_artifact: ClassificationMetricArtifact
+    test_metric_artifact: ClassificationMetricArtifact
+
+@dataclass
+class Model_evaluation_artifact:
+    is_model_accepted: bool
+    improved_accuracy: float
+    best_model_path: str
+    trained_model_path: str
+    train_model_metric_artifact: ClassificationMetricArtifact
+    best_model_metric_artifact: ClassificationMetricArtifact
 
 @dataclass 
 class Model_pusher_artifact():

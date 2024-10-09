@@ -61,14 +61,26 @@ class Data_validation_config():
             training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME,
         )
 
-class Model_Evaluater_config():
-    def __init__(self):
-        pass
-
 class Model_trainer_config():
-    def __init__(self):
-        pass
- 
+    def __init__(self,training_pipeline_config:Training_pipeline_config):
+        self.model_trainer_dir: str = os.path.join(
+            training_pipeline_config.artifact_dir, training_pipeline.MODEL_TRAINER_DIR_NAME
+        )
+        self.trained_model_file_path: str = os.path.join(
+            self.model_trainer_dir, training_pipeline.MODEL_TRAINER_TRAINED_MODEL_DIR, 
+            training_pipeline.MODEL_FILE_NAME
+        )
+        self.expected_accuracy: float = training_pipeline.MODEL_TRAINER_EXPECTED_SCORE
+        self.overfitting_underfitting_threshold = training_pipeline.MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD
+
+class Model_evaluation_config():
+    def __init__(self,training_pipeline_config:Training_pipeline_config):
+        self.model_evaluation_dir: str = os.path.join(
+            training_pipeline_config.artifact_dir, training_pipeline.MODEL_EVALUATION_DIR_NAME
+        )
+        self.report_file_path = os.path.join(self.model_evaluation_dir,training_pipeline.MODEL_EVALUATION_REPORT_NAME)
+        self.change_threshold = training_pipeline.MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+
 class Model_pusher_config():
     def __init__(self):
         pass
