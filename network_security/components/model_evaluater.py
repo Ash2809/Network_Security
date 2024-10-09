@@ -27,14 +27,14 @@ class ModelEvaluater():
         
     def initiate_model_evaluation(self)->Model_evaluation_artifact:
         try:
-            print(self.data_validation_artifact.valid_train_file_path)
-            valid_train_file_path = self.data_validation_artifact.valid_train_file_path
-            valid_test_file_path = self.data_validation_artifact.valid_test_file_path
+            # print(self.data_validation_artifact.valid_train_file_path)
+            # valid_train_file_path = self.data_validation_artifact.valid_train_file_path
+            # valid_test_file_path = self.data_validation_artifact.valid_test_file_path
             
             
             #valid train and test file dataframe
-            train_df = pd.read_csv(valid_train_file_path)
-            test_df = pd.read_csv(valid_test_file_path)
+            train_df = pd.read_csv(r"C:\Projects\Network_Security\Artifacts\10_09_2024_22_12_41\data_validation\validated\train.csv")
+            test_df = pd.read_csv(r"C:\Projects\Network_Security\Artifacts\10_09_2024_22_12_41\data_validation\validated\test.csv")
             
 
             df = pd.concat([train_df,test_df])
