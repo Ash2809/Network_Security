@@ -47,4 +47,5 @@ class Model_evaluation_artifact:
 
 @dataclass 
 class Model_pusher_artifact():
-    pass
+        saved_model_path:str
+        model_file_path:str

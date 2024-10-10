@@ -93,9 +93,12 @@ class TrainingPipeline():
         except Exception as e:
             raise NetworkSecurityException(e, sys)
     
-    def start_model_pusher(self):
+    def start_model_pusher(self, model_eval_artifact:Model_evaluation_artifact):
         try:
-            pass
+            model_pusher_config = Model_pusher_config(training_pipeline_config=self.training_pipepline_config)
+            model_pusher = ModelPusher(model_pusher_config, model_eval_artifact)
+            model_pusher_artifact = model_pusher.initiate_model_pusher()
+            return model_pusher_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
@@ -116,5 +119,8 @@ class TrainingPipeline():
                 #raise Exception("Trained model is not better than the best model")
                 print("Trained model is not better than the best model")
             print("model evalaution artifact.")
+
+            model_pusher_artifact = self.start_model_pusher(model_eval_artifact)
+            print("Model pushing complete")
         except Exception as e:
             raise NetworkSecurityException(e, sys)
