@@ -34,8 +34,10 @@ from network_security.entity.artifact_entity import(
     )
 
 class TrainingPipeline():
+    is_pipeline_running=False
     def __init__(self):
         self.training_pipepline_config = Training_pipeline_config()  # Correct initialization
+        self.s3_sync = S3Sync()
 
     def start_data_ingestion(self):
         try:
@@ -122,6 +124,8 @@ class TrainingPipeline():
         
     def run_pipeline(self):
         try:
+            TrainingPipeline.is_pipeline_running=True
+            
             ingestion_artifact = self.start_data_ingestion()
             print("ingestion artifact:")
             print("Starting validation")
